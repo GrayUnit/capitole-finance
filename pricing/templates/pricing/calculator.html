@@ -1,0 +1,8 @@
+{% load templates_filter %}
+
+<h1>{{ vehicule.marque }} - {{ vehicule.modele }}</h1>
+<ul>
+    {% for key, value in vehicule|to_dict|items %}
+        <li>{{ key }}  :  {{ value }}</li>
+    {% endfor %}
+</ul>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 
 from .models import Vehicule
@@ -10,9 +10,5 @@ def index(request):
     return render(request, 'pricing/index.html', context)
 
 def calculator(request, id_vehicule):
-    try:
-        vehicule = Vehicule.objects.get(pk=id_vehicule)
-    except Vehicule.DoesNotExist:
-        raise Http404("Vehicule introuvable")
-    else:
-        return HttpResponse(f"{vehicule.__dict__}")
+    vehicule = get_object_or_404(Vehicule, pk=id_vehicule)
+    return render(request, "pricing/calculator.html", {"vehicule": vehicule})
