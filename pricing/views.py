@@ -5,5 +5,5 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Bienvenue sur la page index")
 
-def calculator(request):
-    return HttpResponse("Bienvenue sur la page calculator")
+def calculator(request, id_vehicule):
+    return HttpResponse(f"Bienvenue sur la page calculator {id_vehicule}")
