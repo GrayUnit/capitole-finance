@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import (
     render,
     get_object_or_404,
@@ -17,11 +18,12 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Vehicule.objects.all()
 
-
+@login_required
 def calculator(request, id_vehicule):
     vehicule = get_object_or_404(Vehicule, pk=id_vehicule)
     return render(request, "pricing/calculator.html", {"vehicule": vehicule})
 
+@login_required
 def calcul(request, id_vehicule):
     vehicule: Vehicule = get_object_or_404(Vehicule, pk=id_vehicule)
     pricing_info: PricingInfo = get_object_or_404(PricingInfo, modele=vehicule.modele, marque=vehicule.marque)
@@ -32,5 +34,6 @@ def calcul(request, id_vehicule):
     request.session["total"] = total_price
     return redirect(reverse('pricing:result'))
 
+@login_required
 def result(request):
     return render(request, "pricing/result.html", {"total": request.session["total"]})
