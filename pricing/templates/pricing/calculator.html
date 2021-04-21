@@ -6,3 +6,18 @@
         <li>{{ key }}  :  {{ value }}</li>
     {% endfor %}
 </ul>
+
+
+<h3>Calculateur de coûts supplémentaires</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'pricing:calcul' vehicule.id %}" method="post">
+{% csrf_token %}
+    <input type="number" name="km_actuel" id="km_actuel">
+    <label for="km_actuel">Km Actuel</label><br><br>
+
+    <input type="number" name="nb_rayure" id="nb_rayure">
+    <label for="nb_rayure">Nombre de rayure</label><br><br>
+
+    <input type="submit" value="Valider">
+</form>

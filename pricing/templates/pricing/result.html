@@ -1,0 +1,5 @@
+{% if total %}
+<h2>Total : {{total}} €</h2>
+
+<a href="{% url 'pricing:index' %}">Retourner sur la liste des véhicules</a>
+{% endif %}

@@ -14,11 +14,12 @@ class Vehicule(models.Model):
     marque = models.CharField(max_length=255, default="marque")
     modele = models.CharField(max_length=255, default="modele")
     description = models.CharField(max_length=255)
-    km = models.PositiveIntegerField()
-    moteur = models.FloatField()
+    km_initial = models.PositiveIntegerField()
+    moteur = models.FloatField(default=0)
     carburant = models.CharField(max_length=10)
     color = models.CharField(max_length=50)
     category = models.ForeignKey(Category, null=True, blank = True, on_delete=models.SET_NULL)
+    initial_price = models.FloatField(default=0)
 
 
 class PricingInfo(models.Model):
