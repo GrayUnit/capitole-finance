@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Category(models.Model):
@@ -25,3 +26,12 @@ class PricingInfo(models.Model):
     modele = models.CharField(max_length=255, default="modele")
     price_km_supp = models.FloatField()
     price_rayure = models.FloatField()
+    date_modification = models.DateTimeField(default=timezone.now())
+
+
+class HistoryPricing(models.Model):
+    marque = models.CharField(max_length=255, default="marque")
+    modele = models.CharField(max_length=255, default="modele")
+    price_km_supp = models.FloatField()
+    price_rayure = models.FloatField()
+    date_modification = models.DateTimeField()
