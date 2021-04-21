@@ -8,4 +8,5 @@ urlpatterns = [
     path('calculator/<int:id_vehicule>', views.calculator, name="calculator"),
     path('calcul/<int:id_vehicule>', views.calcul, name="calcul"),
     path('result/', views.result, name="result"),
+    path('checkpricing/', views.CheckPricing.as_view())
 ]
