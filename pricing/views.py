@@ -5,7 +5,9 @@ from .models import Vehicule
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Bienvenue sur la page index")
+    list_vehicules = Vehicule.objects.all()
+    context = {"list_vehicules": list_vehicules}
+    return render(request, 'pricing/index.html', context)
 
 def calculator(request, id_vehicule):
     try:
