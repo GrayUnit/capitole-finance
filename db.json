@@ -1,0 +1,16 @@
+{
+    "PricingInfo": [
+        {
+            "marque": "Peugeot",
+            "modele": "206",
+            "prix_km": 0.58,
+            "prix_rayure": 50
+        },
+        {
+            "marque": "Yamaha",
+            "modele": "ROADSTER MT-10",
+            "prix_km": 0.75,
+            "prix_rayure": 10
+        }
+    ]
+}
