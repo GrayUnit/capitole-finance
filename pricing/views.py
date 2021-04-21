@@ -5,14 +5,18 @@ from django.shortcuts import (
     reverse,
 )
 from django.http import HttpResponse, Http404
+from django.views import generic
 
 from .models import Vehicule, PricingInfo
 
 # Create your views here.
-def index(request):
-    list_vehicules = Vehicule.objects.all()
-    context = {"list_vehicules": list_vehicules}
-    return render(request, 'pricing/index.html', context)
+class IndexView(generic.ListView):
+    template_name = "pricing/index.html"
+    context_object_name = "list_vehicules"
+
+    def get_queryset(self):
+        return Vehicule.objects.all()
+
 
 def calculator(request, id_vehicule):
     vehicule = get_object_or_404(Vehicule, pk=id_vehicule)
